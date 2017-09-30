@@ -59,7 +59,9 @@ The status of each file can be obtained via `fts-transfer-status f59e6c24-a5d8-1
 of course, replacing the token with that of the appropriate task. 
 
 To be even more fancy, you can use `jq` from [here](https://stedolan.github.io/jq/) to get a list of the unfinished jobs via
-`fts-transfer-status f59e6c24-a5d8-11e7-9671-02163e01841b -s https://fts3-pilot.cern.ch:8446 -l -j | jq '.job[0].files[] | .state,.source,.destination' | xargs -n 3 | grep -v "FINISHED"`
+```bash
+fts-transfer-status f59e6c24-a5d8-11e7-9671-02163e01841b -s https://fts3-pilot.cern.ch:8446 -l -j | jq '.job[0].files[] | .state,.source,.destination' | xargs -n 3 | grep -v "FINISHED" | awk '{print $2" "$3}'
+```
 
 ## Miscellaneous
 SE names/redirectors can be found from 
