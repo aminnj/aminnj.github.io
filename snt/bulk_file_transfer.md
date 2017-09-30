@@ -50,6 +50,17 @@ the [monitoring page](https://fts3-pilot.cern.ch:8449/fts3/ftsmon/#/).
 
 Note: `fts-<TAB><TAB>` shows other FTS commands to cancel or get the status from the command line.
 
+## Failures?
+In principle, failed jobs should be resubmitted if the error is "recoverable". In the case that they don't
+automatically get resubmitted, you can get a list of the failed jobs and run through the above procedure, creating
+a new filelist to submit.
+
+The status of each file can be obtained via `fts-transfer-status f59e6c24-a5d8-11e7-9671-02163e01841b -s https://fts3-pilot.cern.ch:8446 -l`,
+of course, replacing the token with that of the appropriate task. 
+
+To be even more fancy, you can use `jq` from [here](https://stedolan.github.io/jq/) to get a list of the unfinished jobs via
+`fts-transfer-status f59e6c24-a5d8-11e7-9671-02163e01841b -s https://fts3-pilot.cern.ch:8446 -l -j | jq '.job[0].files[] | .state,.source,.destination' | xargs -n 3 | grep -v "FINISHED"`
+
 ## Miscellaneous
 SE names/redirectors can be found from 
 ```
