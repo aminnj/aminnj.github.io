@@ -41,9 +41,13 @@ redirectors, of course). Execute such a script and redirect the output via `./sc
 
 Next, submit the transfer request (`-o` will overwrite files already existing in the output SE; `man fts-transfer-submit`
 shows other options):
+```bash
+fts-transfer-submit -o -s https://fts3-pilot.cern.ch:8446 -f tosubmit.txt --retry 50 --retry-delay 3600 --proxy /tmp/x509up_u`id -u` -K	
 ```
-fts-transfer-submit -o -s https://fts3-pilot.cern.ch:8446 -f tosubmit.txt
-```
+
+Note that if we don't specify a proxy, jobs will fail to authenticate after 24 hours, so we explicitly specify the x509 file here (so make sure
+you have a valid proxy...). And by default, retries are NOT done (STUPID!). Also by default, a checksum verification is NOT performed (STUPID),
+hence the `-K`.
 
 This spits out a token like `10876666-a5cb-11e7-873a-02163e00a17a`, which is then put into a search box in
 the [monitoring page](https://fts3-pilot.cern.ch:8449/fts3/ftsmon/#/).
