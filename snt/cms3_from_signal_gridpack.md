@@ -151,7 +151,7 @@ must match the sample, of course -- otherwise CMS3 crashes :(.)
 #### Submitting
 
 1. Make sure you have a valid proxy.
-2. Open up a screen, run `source setup.sh` again to be sure, and run `python run.py instructions` to submit CRAB jobs
+2. Open up a screen, run `source setup.sh` again to be sure, and run `python run.py instructions.txt` to submit CRAB jobs
 3. AutoTwopler manages the CRAB jobs, merges the outputs, and the progress can be seen in the URL printed out when you run `source setup.sh`.
 
 #### Success
