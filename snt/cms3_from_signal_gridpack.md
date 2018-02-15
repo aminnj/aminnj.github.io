@@ -5,6 +5,7 @@ Want to make
 * m(stop) = 1600 GeV
 * m(lsp) = 1 GeV
 * number events = O(50k)
+
 following the RunIISpring16 recipes.
 
 ## Instructions
@@ -16,7 +17,7 @@ which has two steps (FSPremix, MiniAOD). Clicking on the first link in the chain
 [this](https://cms-pdmv.cern.ch/mcm/public/restapi/requests/get_setup/SUS-RunIISpring16FSPremix-00017).
 
 Copy the setup file locally, comment out the cmsDriver line for now, and execute it to set up the environment. Since this is a scan, the genfragment
-will be a loop over PSets for all the mass points, and will thus result in a PSet that is a few MB large when running the cmsDriver command.
+will be a loop over PSets for all the mass points, and will thus result in a PSet that is a few megabytes when running the cmsDriver command.
 We only want one point, so inside `CMSSW_8_0_5_patch1/src/Configuration/GenProduction/python/SUS-RunIISpring16FSPremix-00017-fragment.py`, 
 edit the loop over points:
 ```python
@@ -107,9 +108,10 @@ for _ in range(25):
 
 2. Make sure you have a valid proxy.
 3. Open up a screen, run `source setup.sh` again to be sure, and run `python chain.py` to submit jobs to Condor.
-4. In a nutshell, this submits jobs to go from gridpack to miniAOD in two steps. Visit the link that
-gets printed out to see a visual status of the progress, as well as the output location, if you click on the 
-dataset names.
+4. In a nutshell, this submits jobs to go from gridpack to miniAOD in two steps. 
+The script sleeps for 30 minutes at a time, then checks to see what new jobs to submit.
+Visit the link that gets printed out to see a visual status of the progress, as well as the output location, if you click on the 
+dataset names. 
 5. When step 2 is sufficiently done, proceed to making CMS3 from miniAOD.
 
 ### Making CMS3
