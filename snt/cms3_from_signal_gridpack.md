@@ -134,7 +134,7 @@ and modified the masses), a splitting parameter (3 files per job), and the list 
 is just an `ls` of the hadoop output of step 2 from before, but with `/hadoop/cms` stripped off, so that CRAB can accept
 these files as xrootd-accessible.
 ```
-dataset: /SMS-T2tt_mStop1600-mLSP1/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM
+dataset: /SMS-T2tt/mStop1600-Spring16Fast-v3/USER
 files_per_job: 3
 /store/user/namin/private/ProjectMetis//T2tt_mStop1600-LQ_STEP2_v3/output_1.root
 /store/user/namin/private/ProjectMetis//T2tt_mStop1600-LQ_STEP2_v3/output_2.root
